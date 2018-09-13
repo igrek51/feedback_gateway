@@ -1,0 +1,21 @@
+<h1>Send message</h1>
+
+{% if info_message %}<p><strong>{{ info_message }}</strong></p>{% endif %}
+
+<form action="{% url 'contact:send_message' %}" method="post">
+    {% csrf_token %}
+
+    Message:
+    <textarea name="message"></textarea>
+
+    <br/>
+    Your name (optional):
+    <input type="text" name="author"/>
+
+    <br/>
+    Application Id:
+    <input type="text" name="application_id" value="1"/>
+
+    <br/>
+    <input type="submit" value="Send">
+</form>

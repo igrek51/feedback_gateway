@@ -1,0 +1,17 @@
+from django.contrib import admin
+from .models import ContactMessage
+
+
+# Register your models here.
+
+
+class ContactMessageAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None, {'fields': ['message', 'author', 'datetime', 'application_id']}),
+    ]
+    list_display = ('message', 'author', 'datetime', 'application_id')
+    list_filter = ['message', 'author', 'datetime', 'application_id']
+    search_fields = ['message', 'author', 'datetime', 'application_id']
+
+
+admin.site.register(ContactMessage, ContactMessageAdmin)
