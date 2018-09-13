@@ -1,8 +1,9 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.utils import timezone
-
 # Create your views here.
+from django.views.decorators.csrf import csrf_exempt
+
 from contact.models import ContactMessage
 
 
@@ -10,6 +11,7 @@ def send_message_form(request):
     return render(request, 'contact/send.html')
 
 
+@csrf_exempt
 def send_message(request):
     message = request.POST.get('message')
     author = request.POST.get('author')

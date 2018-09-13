@@ -3,7 +3,6 @@
 {% if info_message %}<p><strong>{{ info_message }}</strong></p>{% endif %}
 
 <form action="{% url 'contact:send_message' %}" method="post">
-    {% csrf_token %}
 
     Message:
     <textarea name="message"></textarea>
