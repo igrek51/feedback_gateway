@@ -15,10 +15,14 @@ STOPSIGNAL SIGINT
 ENTRYPOINT ["python", "manage.py"]
 CMD ["runserver", "0.0.0.0:8006", "--insecure"]
 
+# docker stop feedback_gateway
+# docker rm feedback_gateway
+# docker rmi feedback_gateway
 # docker build --tag feedback_gateway .
-# docker run --name feedback_gateway -p 8006:8006 -d --restart always feedback_gateway
 
+# rm feedback_gateway.tar.gz
 # docker save -o feedback_gateway.tar feedback_gateway
 # gzip feedback_gateway.tar
 
 # docker load -i feedback_gateway.tar.gz
+# docker run --name feedback_gateway -p 8006:8006 -d --restart always feedback_gateway
