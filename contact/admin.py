@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from .models import ContactMessage
 
 
@@ -7,11 +8,11 @@ from .models import ContactMessage
 
 class ContactMessageAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None, {'fields': ['message', 'author', 'datetime', 'application_id']}),
+        (None, {'fields': ['id', 'datetime', 'message', 'author', 'application_id']}),
     ]
-    list_display = ('message', 'author', 'datetime', 'application_id')
-    list_filter = ['message', 'author', 'datetime', 'application_id']
-    search_fields = ['message', 'author', 'datetime', 'application_id']
+    list_display = ('id', 'datetime', 'message', 'author', 'application_id')
+    list_filter = ['id', 'datetime', 'message', 'author', 'application_id']
+    search_fields = ['id', 'datetime', 'message', 'author', 'application_id']
 
 
 admin.site.register(ContactMessage, ContactMessageAdmin)

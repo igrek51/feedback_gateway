@@ -36,7 +36,7 @@ docker load -i $IMAGE_NAME.tar.gz
 echo "[remote] Running new container..."
 sudo docker run \
 	--name $CONTAINER_NAME \
-	-p 8006:8006
+	-p 8006:8006 \
 	-d \
 	--restart always \
 	$CONTAINER_NAME
