@@ -1,14 +1,11 @@
 from django.http import HttpResponse
-from django.shortcuts import render
 from django.utils import timezone
-# Create your views here.
 from django.views.decorators.csrf import csrf_exempt
 
 from contact.models import ContactMessage
 
 
-def send_message_form(request):
-    return render(request, 'contact/send.html')
+# Create your views here.
 
 
 @csrf_exempt
@@ -29,5 +26,14 @@ def send_message(request):
     cm = ContactMessage(message=message, author=author, datetime=timezone.now(), application_id=application_id)
     # Save the object into the database
     cm.save()
+
+    # send email
+    # send_mail(
+    #     'SongBook Feedback message',
+    #     'Here is the message: %s' % message,
+    #     'django@vps544895.ovh.net',
+    #     ['igrek.s@o2.pl'],
+    #     fail_silently=False,
+    # )
 
     return HttpResponse("200 - Message has been sent.")
