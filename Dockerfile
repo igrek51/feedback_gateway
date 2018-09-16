@@ -13,7 +13,7 @@ ADD . $PROJECT_DIR
 EXPOSE 8006
 STOPSIGNAL SIGINT
 ENTRYPOINT ["python", "manage.py"]
-CMD ["runserver", "0.0.0.0:8006", "--settings=feedback_gateway.settings_prod", "--insecure"]
+CMD ["runserver", "--settings=feedback_gateway.settings_prod", "0.0.0.0:8006"]
 
 # docker stop feedback_gateway
 # docker rm feedback_gateway
