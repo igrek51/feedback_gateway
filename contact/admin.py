@@ -8,10 +8,10 @@ from .models import ContactMessage
 
 class ContactMessageAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None, {'fields': ['id', 'datetime', 'message', 'author', 'application_id']}),
+        (None, {'fields': ['datetime', 'message', 'author', 'application_id']}),
     ]
-    list_display = ('id', 'datetime', 'message', 'author', 'application_id')
-    list_filter = ['id', 'datetime', 'message', 'author', 'application_id']
+    list_display = ('datetime', 'message', 'author', 'application_id', 'id')
+    list_filter = ['datetime', 'author', 'application_id']
     search_fields = ['id', 'datetime', 'message', 'author', 'application_id']
 
 
