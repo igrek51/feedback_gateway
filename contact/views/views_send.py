@@ -1,4 +1,5 @@
 import smtplib
+from datetime import datetime
 
 from django.http import HttpResponse
 from django.utils import timezone
@@ -34,7 +35,8 @@ def send_message(request):
     from_address = 'songbook@vps544895.ovh.net'
     to_address = 'igrek.s@o2.pl'
     subject = 'SongBook Feedback'
-    text = 'Here is the message from %s:\n%s' % (author, message)
+    mdatetime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    text = 'Timestamp: %s\nHere is the feedback message from %s:\n%s' % (mdatetime, author, message)
     message = """To: {}\nFrom: {}\nSubject: {}\n\n{}""".format(to_address, from_address, subject, text)
     server.sendmail(from_address, to_address, message.encode('utf-8'))
     server.quit()
