@@ -36,7 +36,7 @@ def send_message(request):
     subject = 'SongBook Feedback'
     text = 'Here is the message from %s:\n%s' % (author, message)
     message = """To: {}\nFrom: {}\nSubject: {}\n\n{}""".format(to_address, from_address, subject, text)
-    server.sendmail(from_address, to_address, message)
+    server.sendmail(from_address, to_address, message.encode('utf-8'))
     server.quit()
 
     return HttpResponse("200 - Message has been sent.")
