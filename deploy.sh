@@ -37,6 +37,7 @@ echo "[remote] Running new container..."
 sudo docker run \
 	--name $CONTAINER_NAME \
 	-p 8006:8006 \
+	--network host \
 	-d \
 	--restart always \
 	$CONTAINER_NAME

@@ -1,6 +1,7 @@
+import datetime
 import smtplib
-from datetime import datetime
 
+import pytz
 from django.http import HttpResponse
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
@@ -30,12 +31,13 @@ def send_message(request):
     # Save the object into the database
     cm.save()
 
-    server = smtplib.SMTP('vps544895.ovh.net', 25)
+    server = smtplib.SMTP('127.0.0.1', 25)
     server.set_debuglevel(1)
     from_address = 'songbook@vps544895.ovh.net'
     to_address = 'igrek.s@o2.pl'
     subject = 'SongBook Feedback'
-    local_now = datetime.datetime.now(timezone('UTC')).astimezone(timezone('Europe/Warsaw'))
+    utc_now = datetime.datetime.now(pytz.timezone('UTC'))
+    local_now = utc_now.astimezone(pytz.timezone('Europe/Warsaw'))
     mdatetime = local_now.strftime('%Y-%m-%d %H:%M:%S')
     text = 'Timestamp: %s\nHere is the feedback message from %s:\n%s' % (mdatetime, author, message)
     message = """To: {}\nFrom: {}\nSubject: {}\n\n{}""".format(to_address, from_address, subject, text)

@@ -13,7 +13,7 @@ docker load -i feedback_gateway.tar.gz
 
 # RUN
 echo "[remote] Running new container..."
-sudo docker run 	--name feedback_gateway 	-p 8006:8006 	-d 	--restart always 	feedback_gateway
+sudo docker run 	--name feedback_gateway 	-p 8006:8006 	--network host 	-d 	--restart always 	feedback_gateway
 
 echo "[remote] Logs:"
 sudo docker logs feedback_gateway
