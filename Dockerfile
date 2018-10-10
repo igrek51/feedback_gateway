@@ -9,7 +9,7 @@ RUN mkdir -p $PROJECT_DIR
 WORKDIR $PROJECT_DIR
 
 COPY feedback_gateway/* ${PROJECT_DIR}/feedback_gateway/
-COPY contact db.sqlite3/* ${PROJECT_DIR}/contact/
+COPY contact ${PROJECT_DIR}/contact/
 COPY manage.py ${PROJECT_DIR}/
 COPY db.sqlite3 ${PROJECT_DIR}/
 
@@ -18,7 +18,7 @@ EXPOSE 8006
 STOPSIGNAL SIGINT
 ENTRYPOINT ["python", "manage.py"]
 #CMD ["runserver", "--settings=feedback_gateway.settings_prod", "--insecure", "0.0.0.0:8006"]
-CMD ["runserver", "0.0.0.0:8006"]
+CMD ["runserver", "--settings=feedback_gateway.settings_prod", "--insecure", "0.0.0.0:8006"]
 
 # docker stop feedback-gateway
 # docker rm feedback-gateway
