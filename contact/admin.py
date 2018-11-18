@@ -8,11 +8,11 @@ from .models import ContactMessage
 
 class ContactMessageAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None, {'fields': ['datetime', 'message', 'author', 'application_id']}),
+        (None, {'fields': ['datetime', 'subject', 'message', 'author', 'ip_address', 'application_id']}),
     ]
-    list_display = ('datetime', 'message', 'author', 'application_id', 'id')
-    list_filter = ['datetime', 'author', 'application_id']
-    search_fields = ['id', 'datetime', 'message', 'author', 'application_id']
+    list_display = ('datetime', 'subject', 'message', 'author', 'application_id', 'ip_address', 'id')
+    list_filter = ['subject', 'datetime', 'author', 'application_id']
+    search_fields = ['id', 'datetime', 'subject', 'message', 'author', 'application_id']
 
 
 admin.site.register(ContactMessage, ContactMessageAdmin)
